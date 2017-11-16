@@ -8,7 +8,7 @@ a list uses an `index` to associate the position in memory where that `element` 
 
 a dictionary uses a `key` to associate the position in memory where that `value` is stored. **a dictionary is unordered** and this is why you cannot access its values using an **integer** `index` and instead must use a **string** `key`[1]
 
-accessing the element of a list DOES NOT USE QUOTES because, as we know, integer values do not have quotes which is what you use for the index.**
+**accessing the element of a list DOES NOT USE QUOTES because, as we know, integer values do not have quotes which is what you use for the index.**
 
 **accessing the value in a dictionary DOES USE QUOTES for the key because, as we know, strings do have quotes and the key is a string**
 
