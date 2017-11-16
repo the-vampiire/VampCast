@@ -1,7 +1,7 @@
 
 **high-level `if __name__ == "__main__"` explanation**
 
-"basically like saying “when this script is called has it been called as an import or as a program?”
+its like saying “when this script is called has it been called as an import or as a program?”
 
 
 the way to check if it has been imported or called as a program is by checking the "__name__" of the file (a hidden property that is set in the background based on the context in which it was called)
