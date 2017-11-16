@@ -40,7 +40,7 @@ class User:
         except IndexError:
             return "User not found"
         
-        data_to_get = requested_data if requested_data else ["name", "height", "weight"]
+        data_to_get = requested_data if requested_data else vars(self).keys()
         for field in data_to_get:
             output[field] = getattr(self, field)[user_id]
 
@@ -73,5 +73,4 @@ for user_data in data:
     user.update_or_add_user(user_data)
 
 print(user.get_user_data(1))
-
 
