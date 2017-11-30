@@ -1,4 +1,4 @@
-class User:
+class UserTable:
     def __init__(self):
         self.id = [0]
         self.name = [0]
@@ -45,32 +45,4 @@ class User:
             output[field] = getattr(self, field)[user_id]
 
         return output
-
-user = User()
-
-data = [
-    {
-        "id": 0,
-        "name": "Patrick",
-        "height": 73,
-        "weight": 150
-    },
-    {
-        "id": 1,
-        "name": "Steve",
-        "height": 78,
-        "weight": 240
-    },
-    {
-        "id": 2,
-        "name": "Courtney",
-        "height": 64,
-        "weight": 110
-    }
-]
-
-for user_data in data:
-    user.update_or_add_user(user_data)
-
-print(user.get_user_data(1))
 
