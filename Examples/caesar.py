@@ -43,7 +43,7 @@ def rotate_character(character, rotation):
         # modify the rotation amount if it goes beyond 25 (the end of the alphabet) using the modulus (%) operator
         if rotated_position > 25:
             rotated_position = rotated_position % 26 # use the % operator with the length of the alphabet (26) to "wrap around" the alphabet
-        # use the ascii lowercase string to get the new letter (after rotation) using string indexing
+        # use the ascii lowercase string to get the new letter (after rotation) using string indexing "[index]"" syntax
         rotated_letter = ascii_lowercase[rotated_position]
         # modify the rotated letter if the original letter was uppercase
         if character.isupper(): # use the string method isupper() to determine if the original character was uppercase
