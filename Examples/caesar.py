@@ -32,7 +32,7 @@ def rotate_character(character, rotation):
 
     calls the alphabet_position() function to get the base alphabetic position from which the letter will be rotated
     """
-    from string import ascii_lowercase # import the ascii_lowercase library "abcdefghijklmnopqrstuvwxyz"
+    from string import ascii_lowercase # import the ascii_lowercase ("abcdefghijklmnopqrstuvwxyz") set from the "string" module
 
     # first check if the character is alphabetic by using the isalpha() string method
     if character.isalpha(): # if the character IS alphabetic then proceed to the rest of the function block
@@ -78,10 +78,37 @@ def quit_handler():
 
 def main():
     """
-    if Caesar's Cypher is to be used as a standalone program prompt the user for inputs
-    and perform the encryption / decryption as requested
+    Executed if Caesar's Cypher is called as a standalone program (not as an import)
     """
 
+    welcome_message = """     
+    ********************************************************************************
+    ********************************************************************************
+    ***                                                                          ***
+    ***                                                                          ***
+    ***                             ---------------                              ***
+    ***                             CAESAR'S CYPHER                              ***
+    ***                             ---------------                              ***
+    ***                                                                          ***
+    ***                                                                          ***
+    ********************************************************************************
+    ********************************************************************************
+                        title generated using generate_title.py
+
+    Welcome to the Caesar Cypher program
+    The cypher works by accepting a string of text and a rotation value
+    The string of text will be encrypted by having each letter replaced by the letter 
+    corresponding to the rotation amount\n
+    For example the letter "a" rotated 3 letters would be replaced with the letter "d"
+    If a rotation would go "out of bounds" (passed the letter "z") it will wrap and 
+    rotate the remaining letters starting over at "a"\n
+    You can decrypt the text as long as you know the rotation used in the encryption!\n
+    Try decrypting this one to start.
+    Text: janw'c hxd j lunena trccnw?
+    Rotation: start guessing!
+    """
+
+    print(welcome_message)
     while True:
         choice = input("Would you like to encrypt or decrypt?\nYou may enter 'encrypt', 'e', 'decrypt' or 'd'\n>>> ")
         if choice not in ("encrypt", "e", "decrypt", "d"):
