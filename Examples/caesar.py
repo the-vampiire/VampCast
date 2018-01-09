@@ -11,7 +11,7 @@ def alphabet_position(letter):
 
     lowercase letters begin at the unicode value 97 ("a") and end at value 122 ("z")
         in order to return the 0-based index of the letter within the alphabet we have to start "a" at 0
-            we can do this by subtracting 97 from its lowercase unicode value
+            we can do this by subtracting 97 from its lowercase unicode value\
 
     uppercase letters begin at unicode value 65 ("A") and end at value 90 ("Z")
         in order to return the 0-based index of the letter within the alphabet we have to start "A" at 0
@@ -41,8 +41,7 @@ def rotate_character(character, rotation):
         # determine the new position by adding the rotation amount
         rotated_position = initial_position + rotation
         # modify the rotation amount if it goes beyond 25 (the end of the alphabet) using the modulus (%) operator
-        if rotated_position > 25:
-            rotated_position = rotated_position % 26 # use the % operator with the length of the alphabet (26) to "wrap around" the alphabet
+        rotated_position = rotated_position % 26 # use the % operator with the length of the alphabet (26) to "wrap around" the alphabet
         # use the ascii lowercase string to get the new letter (after rotation) using string indexing "[index]"" syntax
         rotated_letter = ascii_lowercase[rotated_position]
         # modify the rotated letter if the original letter was uppercase
@@ -53,7 +52,7 @@ def rotate_character(character, rotation):
     else:  # if the character IS NOT alphabetic then return the character as is (without rotation)
         return character
 
-def encrypt(text, rotation):
+def caesar_encrypt(text, rotation):
     """
     accepts a string of text to be encoded by the rotation amount of the second argument
     returns an encrypted string
@@ -69,6 +68,11 @@ def encrypt(text, rotation):
         output_string += rotate_character(character, rotation) 
     return output_string
 
+
+"""
+Main and helpers
+"""
+
 def quit_handler():
     """ prompts the user to quit or continue """
     quit_choice = input("\nTo quit type 'q' or 'quit' otherwise hit any key to continue\n>>> ")
@@ -82,36 +86,37 @@ def main():
     """
 
     welcome_message = """     
-    ********************************************************************************
-    ********************************************************************************
-    ***                                                                          ***
-    ***                                                                          ***
-    ***                             ---------------                              ***
-    ***                             CAESAR'S CYPHER                              ***
-    ***                             ---------------                              ***
-    ***                                                                          ***
-    ***                                                                          ***
-    ********************************************************************************
-    ********************************************************************************
-                        title generated using generate_title.py
+********************************************************************************
+********************************************************************************
+***                                                                          ***
+***                                                                          ***
+***                             ---------------                              ***
+***                             CAESAR'S CYPHER                              ***
+***                             ---------------                              ***
+***                                                                          ***
+***                                                                          ***
+********************************************************************************
+********************************************************************************
+                    title generated using generate_title.py
 
-    Welcome to the Caesar Cypher program
-    The cypher works by accepting a string of text and a rotation value
-    The string of text will be encrypted by having each letter replaced by the letter 
-    corresponding to the rotation amount\n
-    For example the letter "a" rotated 3 letters would be replaced with the letter "d"
-    If a rotation would go "out of bounds" (passed the letter "z") it will wrap and 
-    rotate the remaining letters starting over at "a"\n
-    You can decrypt the text as long as you know the rotation used in the encryption!\n
-    Try decrypting this one to start.
-    Text: janw'c hxd j lunena trccnw?
-    Rotation: start guessing!
-    """
+Welcome to the Caesar Cypher program
+The cypher works by accepting a string of text and a rotation value
+The string of text will be encrypted by having each letter replaced by the letter 
+corresponding to the rotation amount\n
+For example the letter "a" rotated 3 letters would be replaced with the letter "d"
+If a rotation would go "out of bounds" (passed the letter "z") it will wrap and 
+rotate the remaining letters starting over at "a"\n
+You can decrypt the text as long as you know the rotation used in the encryption!\n
+Try decrypting this one to start.
+Text: janw'c hxd j lunena trccnw?
+Rotation: start guessing!
+"""
 
     print(welcome_message)
     while True:
         choice = input("Would you like to encrypt or decrypt?\nYou may enter 'encrypt', 'e', 'decrypt' or 'd'\n>>> ")
         if choice not in ("encrypt", "e", "decrypt", "d"):
+            if choice in ("quit", "q", "exit", "let me out of here please :("): quit()
             print("\nYou must type 'encrypt', 'e', 'decrypt' or 'd' to continue")
         else:
             choice = "encrypt" if choice == "e" else "decrypt"
@@ -124,9 +129,9 @@ def main():
             else:
                 if choice in ("decrypt", "d"):
                     rotation_amount = 26 - rotation_amount
-                    print("\nEncrypted text: {0}\nDecrypted text: {1}".format(input_text, encrypt(input_text, rotation_amount)))
+                    print("\nEncrypted text: {0}\nDecrypted text: {1}".format(input_text, caesar_encrypt(input_text, rotation_amount)))
                 else:
-                    print("\nUnencrypted text: {0}\nEncrypted text: {1}".format(input_text, encrypt(input_text, rotation_amount)))
+                    print("\nUnencrypted text: {0}\nEncrypted text: {1}".format(input_text, caesar_encrypt(input_text, rotation_amount)))
         quit_handler()
 
 if __name__ == "__main__":
